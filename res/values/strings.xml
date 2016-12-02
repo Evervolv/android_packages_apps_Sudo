@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">Sudo</string>
+    <string name="sudo_settings">Sudo Settings</string>
+
+    <!-- Common strings -->
+    <string name="allow">Allow</string>
+    <string name="deny">Deny</string>
+    <string name="interactive">Interactive</string>
+
+    <!-- App Policies -->
+    <string name="app_policies_title">App policies</string>
+    <string name="app_policies_logs_title">Logs</string>
+    <string name="app_policy_info_delete">Delete app policy</string>
+    <string name="app_header">App:</string>
+    <string name="package_header">Package:</string>
+    <string name="uid_header">Requested UID:</string>
+    <string name="command_header">Command:</string>
+    <string name="switch_logging">Logging</string>
+    <string name="switch_notifications">Notifications</string>
+    <string name="app_id">Id</string>
+    <string name="app_package">Package</string>
+    <string name="app_requested_uuid">Requested UUID</string>
+    <string name="app_command">Command</string>
+    <string name="app_all_commands">All commands</string>
+
+    <!-- Notify/Receive/Request -->
+    <string name="owner_login_info">Please switch to the owner account to approve or deny this request.</string>
+    <string name="application_request">%s is requesting Root access.</string>
+    <string name="unknown_uid">Unknown UID: %s</string>
+    <string name="this_time_only">This time only</string>
+    <string name="remember_for">Remember choice for %s minutes</string>
+    <string name="remember_forever">Remember choice forever</string>
+    <string name="status_incoming">Incoming Superuser Request...</string>
+    <string name="info">Warning: If you do not understand this, you should deny the request.</string>
+    <string name="su_request">Superuser Request</string>
+    <string name="su_granted">Superuser granted to %s</string>
+    <string name="su_denied">Superuser denied to %s</string>
+
+    <!-- Pin -->
+    <string name="pref_pin_entry_title">PIN Protection</string>
+    <string name="enter_pin">Enter PIN</string>
+    <string name="incorrect_pin">Incorrect PIN</string>
+    <string name="verify_pin">Verify PIN</string>
+
+    <!-- Access settings -->
+    <string name="pref_header_access">Access</string>
+
+    <string name="pref_title_root_access">Root Access</string>
+    <string name="pref_root_access_disabled">Disabled</string>
+    <string name="pref_root_access_apps_only">Apps only</string>
+    <string name="pref_root_access_adb_only">ADB only</string>
+    <string name="pref_root_access_apps_adb">Apps and ADB</string>
+
+    <!-- Security settings -->
+    <string name="pref_header_security">Security</string>
+
+    <string name="pref_declared_permission_title">Declared permission</string>
+    <string name="pref_declared_permission_summary">Only allow requests from apps that explicitly declare permission</string>
+
+    <string name="pref_auto_response_title">Automatic response</string>
+    <string name="pref_auto_response_prompt_summary">Set to prompt</string>
+    <string name="pref_auto_response_allow_summary">Set to allow</string>
+    <string name="pref_auto_response_deny_summary">Set to deny</string>
+
+    <string name="pref_auto_response_prompt">Prompt</string>
+    <string name="pref_auto_response_allow">Allow</string>
+    <string name="pref_auto_response_deny">Deny</string>
+
+    <string name="pref_multiuser_policy_title">Multiuser policy</string>
+    <string name="pref_multiuser_owner_only_summary">Only the device owner can request Superuser</string>
+    <string name="pref_multiuser_owner_managed_summary">The device owner will be prompted when another user requests Superuser</string>
+    <string name="pref_multiuser_user_summary">All users can request Superuser</string>
+
+    <string name="pref_multiuser_owner_only">Owner only</string>
+    <string name="pref_multiuser_owner_managed">Owner managed</string>
+    <string name="pref_multiuser_user">All Users</string>
+    <string name="pref_multiuser_require_owner">The multiuser policy can only be managed by the device owner.</string>
+
+    <!-- Preferences -->
+    <string name="pref_header_settings">Preferences</string>
+
+    <string name="pref_logging_title">Logging</string>
+    <string name="pref_logging_summary">Enable or disable request logging</string>
+
+    <string name="pref_request_timeout_title">Request timeout</string>
+    <string name="pref_request_timeout_summary">Superuser requests will time out and be denied after %s seconds</string>
+
+    <string name="pref_request_timeout_ten">10 Seconds</string>
+    <string name="pref_request_timeout_twenty">20 Seconds</string>
+    <string name="pref_request_timeout_thirty">30 Seconds</string>
+    <string name="pref_request_timeout_sixty">60 Seconds</string>
+
+    <string name="pref_notifications_title">Notifications</string>
+    <string name="pref_notifications_summary">A %s will be shown when an app is granted or denied Superuser permissions</string>
+
+    <string name="pref_notifications_no_notification_summary">No notification will be shown</string>
+    <string name="pref_notifications_none">None</string>
+    <string name="pref_notifications_toast">Toast</string>
+    <string name="pref_notifications_notification">Notification</string>
+
+</resources>
