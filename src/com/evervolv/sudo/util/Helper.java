@@ -37,8 +37,8 @@ public class Helper {
             return ret;
         }
         catch (Exception ex) {
+            return null;
         }
-        return null;
     }
 
     public static Drawable loadIcon(Context context, String pkg) {
@@ -48,14 +48,14 @@ public class Helper {
             return pi.applicationInfo.loadIcon(pm);
         }
         catch (Exception ex) {
+            return null;
         }
-        return null;
     }
 
     @SuppressLint("NewApi")
     public static boolean supportsMultipleUsers(Context context) {
-        final UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
         try {
+            final UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
             Method supportsMultipleUsers = UserManager.class.getMethod("supportsMultipleUsers");
             return (Boolean)supportsMultipleUsers.invoke(um);
         }
@@ -66,8 +66,8 @@ public class Helper {
 
     @SuppressLint("NewApi")
     public static boolean isAdminUser(Context context) {
-        final UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
         try {
+            final UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
             Method getUserHandle = UserManager.class.getMethod("getUserHandle");
             int userHandle = (Integer)getUserHandle.invoke(um);
             return userHandle == 0;

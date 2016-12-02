@@ -2,7 +2,7 @@
 
     <PreferenceCategory android:title="@string/pref_header_access">
 
-        <ListPreference
+        <android.support.v7.preference.DropDownPreference
             android:key="root_access"
             android:title="@string/pref_title_root_access"
             android:entries="@array/pref_access_list_titles"
@@ -12,37 +12,33 @@
 
     <PreferenceCategory android:title="@string/pref_header_security">
 
-        <ListPreference android:key="auto_response"
+        <android.support.v7.preference.DropDownPreference android:key="auto_response"
             android:title="@string/pref_auto_response_title"
             android:dialogTitle="@string/pref_auto_response_title"
             android:entries="@array/pref_auto_response_list_titles"
             android:entryValues="@array/pref_auto_response_list_values" />
 
-        <ListPreference android:key="multiuser_policy"
+        <android.support.v7.preference.DropDownPreference android:key="multiuser_policy"
             android:title="@string/pref_multiuser_policy_title"
             android:dialogTitle="@string/pref_multiuser_policy_title"
             android:entries="@array/pref_multiuser_policy_list_titles"
             android:entryValues="@array/pref_multiuser_policy_list_values" />
 
-        <com.evervolv.sudo.preference.PinEntryPreference
-            android:key="pin_entry"
-            android:title="@string/pref_pin_entry_title" />
-
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_header_settings">
 
-        <SwitchPreference android:key="logging"
+        <SwitchPreferenceCompat android:key="logging"
             android:title="@string/pref_logging_title"
             android:summary="@string/pref_logging_summary" />
 
-        <ListPreference android:key="request_timeout"
+        <android.support.v7.preference.DropDownPreference android:key="request_timeout"
             android:title="@string/pref_request_timeout_title"
             android:dialogTitle="@string/pref_request_timeout_title"
             android:entries="@array/pref_request_timeout_list_titles"
             android:entryValues="@array/pref_request_timeout_list_values" />
 
-        <ListPreference android:key="notifications"
+        <android.support.v7.preference.DropDownPreference android:key="notifications"
             android:title="@string/pref_notifications_title"
             android:dialogTitle="@string/pref_notifications_title"
             android:entries="@array/pref_notifications_list_titles"

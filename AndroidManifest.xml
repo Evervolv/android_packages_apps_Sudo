@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.evervolv.sudo">
+        xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
+        package="com.evervolv.sudo"
+        coreApp="true"
+        android:sharedUserId="android.uid.system">
 
     <permission
             android:name="android.permission.REQUEST_SUPERUSER"
@@ -9,7 +11,13 @@
             android:name="android.permission.REPORT_SUPERUSER"
             android:protectionLevel="signature" />
 
-    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application

@@ -36,12 +36,6 @@
     <string name="su_granted">Superuser granted to %s</string>
     <string name="su_denied">Superuser denied to %s</string>
 
-    <!-- Pin -->
-    <string name="pref_pin_entry_title">PIN Protection</string>
-    <string name="enter_pin">Enter PIN</string>
-    <string name="incorrect_pin">Incorrect PIN</string>
-    <string name="verify_pin">Verify PIN</string>
-
     <!-- Access settings -->
     <string name="pref_header_access">Access</string>
 

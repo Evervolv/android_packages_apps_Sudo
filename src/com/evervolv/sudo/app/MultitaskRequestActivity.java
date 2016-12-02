@@ -45,7 +45,6 @@ import com.evervolv.sudo.R;
 import com.evervolv.sudo.database.DatabaseHelper;
 import com.evervolv.sudo.database.UidPolicy;
 import com.evervolv.sudo.util.Constants;
-import com.evervolv.sudo.util.PinViewHelper;
 
 import junit.framework.Assert;
 
@@ -439,38 +438,10 @@ public class MultitaskRequestActivity extends FragmentActivity {
         mAllow.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!Constants.isPinProtected(MultitaskRequestActivity.this)) {
-                    approve();
-                   return;
-                }
-
-                ViewGroup ready = (ViewGroup)findViewById(R.id.root);
-                final int until = getUntil();
-                ready.removeAllViews();
-                
-                PinViewHelper pin = new PinViewHelper(getLayoutInflater(), (ViewGroup)findViewById(android.R.id.content), null) {
-                    @Override
-                    public void onEnter(String password) {
-                        super.onEnter(password);
-                        if (Constants.checkPin(MultitaskRequestActivity.this, password)) {
-                            mAllow.setEnabled(false);
-                            mDeny.setEnabled(false);
-                            handleAction(true, until);
-                        }
-                        else {
-                            Toast.makeText(MultitaskRequestActivity.this, getString(R.string.incorrect_pin), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    @Override
-                    public void onCancel() {
-                        super.onCancel();
-                        deny();
-                    }
-                };
-                
-                ready.addView(pin.getView());
+                approve();
             }
         });
+
         mDeny.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
