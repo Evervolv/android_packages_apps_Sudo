@@ -135,21 +135,35 @@ public class SudoPrefsFragment extends PreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        int intValue = Integer.valueOf((String) newValue);
+
         if (preference == mRootAccess) {
-            writeAccessOptions(Integer.valueOf((String) newValue));
+            writeAccessOptions(intValue);
             return true;
         }
         if (preference == mAutoResponse) {
-            int response = Integer.valueOf((String) newValue);
-            setAutoResponseSummary(response);
-            Constants.setAutomaticResponse(mContext, response);
+            setAutoResponseSummary(intValue);
+            Constants.setAutomaticResponse(mContext, intValue);
             return true;
         }
         if (preference == mMultiuserPolicy) {
-            int mode = Integer.valueOf((String) newValue);
-            setMultiuserModeSummary(mode);
-            Constants.setMultiuserMode(mContext, mode);
+            setMultiuserModeSummary(intValue);
+            Constants.setMultiuserMode(mContext, intValue);
             return true;
+        }
+        if (preference == mLogging) {
+            Constants.setLogging(mContext, mLogging.isChecked());
+            return true;
+        }
+        if (preference == mNotifications) {
+            Constants.setNotificationType(mContext, intValue);
+            setNotificationTypeSummary(intValue);
+            return true;
+        }
+        if (preference == mRequestTimeout) {
+            Constants.setTimeout(mContext, intValue);
+            mRequestTimeout.setSummary(getString(
+                    R.string.pref_request_timeout_summary, intValue));
         }
         return false;
     }
