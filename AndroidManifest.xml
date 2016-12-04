@@ -25,7 +25,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/SudoActivityTheme">
 
         <activity
             android:name=".SudoActivity"
@@ -80,6 +80,7 @@
         <!-- Multiple instances of this activity can be running for multiple su requests -->
         <activity
             android:name=".app.MultitaskRequestActivity"
+            android:theme="@style/RequestActivityTheme"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:excludeFromRecents="true"
             android:exported="false"
