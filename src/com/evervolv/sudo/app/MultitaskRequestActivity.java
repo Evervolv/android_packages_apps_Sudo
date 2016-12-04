@@ -52,7 +52,7 @@ import java.io.DataInputStream;
 import java.io.File;
 
 public class MultitaskRequestActivity extends FragmentActivity {
-    private static final String LOGTAG = "Superuser";
+    private static final String LOGTAG = "Sudo";
     int mCallerUid;
     int mDesiredUid;
     String mDesiredCmd;
@@ -176,8 +176,6 @@ public class MultitaskRequestActivity extends FragmentActivity {
         ((TextView)findViewById(R.id.uid_header)).setText(Integer.toString(mDesiredUid));
         ((TextView)findViewById(R.id.command_header)).setText(mDesiredCmd);
 
-        boolean sudoDeclared = false;
-        boolean granted = false;
         if (pkgs != null && pkgs.length > 0) {
             for (String pkg: pkgs) {
                 try {
@@ -186,23 +184,8 @@ public class MultitaskRequestActivity extends FragmentActivity {
                     ImageView icon = (ImageView)packageInfo.findViewById(R.id.image);
                     icon.setImageDrawable(pi.applicationInfo.loadIcon(pm));
                     ((TextView)packageInfo.findViewById(R.id.title)).setText(pi.applicationInfo.loadLabel(pm));
-                    
                     ((TextView)findViewById(R.id.app_header)).setText(pi.applicationInfo.loadLabel(pm));
                     ((TextView)findViewById(R.id.package_header)).setText(pi.packageName);
-                    
-                    if (pi.requestedPermissions != null) {
-                        for (String perm: pi.requestedPermissions) {
-                            if (PERMISSION.equals(perm)) {
-                                sudoDeclared = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    granted = checkPermission(PERMISSION, mPid, mCallerUid) == PackageManager.PERMISSION_GRANTED;
-                    
-                    // could display them all, but screw it...
-                    // maybe a better ux for this later
                     break;
                 }
                 catch (Exception ex) {
@@ -212,7 +195,7 @@ public class MultitaskRequestActivity extends FragmentActivity {
         }
 
         // handle declared permission
-        if (Constants.getRequirePermission(MultitaskRequestActivity.this) && !sudoDeclared) {
+        if (Constants.getRequirePermission(MultitaskRequestActivity.this)) {
             Log.i(LOGTAG, "Automatically denying due to missing permission");
             mHandler.post(new Runnable() {
                 @Override
@@ -228,7 +211,7 @@ public class MultitaskRequestActivity extends FragmentActivity {
         switch (Constants.getAutomaticResponse(MultitaskRequestActivity.this)) {
         case Constants.AUTOMATIC_RESPONSE_ALLOW:
             // check if the permission must be granted 
-            if (Constants.getRequirePermission(MultitaskRequestActivity.this) && !granted)
+            if (Constants.getRequirePermission(MultitaskRequestActivity.this))
                 break;
             Log.i(LOGTAG, "Automatically allowing due to user preference");
             mHandler.post(new Runnable() {

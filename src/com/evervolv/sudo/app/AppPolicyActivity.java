@@ -1,17 +1,17 @@
 package com.evervolv.sudo.app;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v4.widget.SlidingPaneLayout.PanelSlideListener;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.evervolv.sudo.R;
 import com.evervolv.sudo.fragment.AppInfoFragment;
 
-public class AppPolicyActivity extends AppCompatActivity {
+public class AppPolicyActivity extends Activity {
 
     private SlidingPaneLayout mSlidingPaneLayout;
     

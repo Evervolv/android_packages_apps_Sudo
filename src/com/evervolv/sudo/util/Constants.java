@@ -37,10 +37,10 @@ public class Constants {
     public static final int AUTOMATIC_RESPONSE_DENY = 2;
     public static final int AUTOMATIC_RESPONSE_DEFAULT = AUTOMATIC_RESPONSE_PROMPT;
 
-    public static final int SUPERUSER_ACCESS_DISABLED = 0;
-    public static final int SUPERUSER_ACCESS_APPS_ONLY = 1;
-    public static final int SUPERUSER_ACCESS_ADB_ONLY = 2;
-    public static final int SUPERUSER_ACCESS_APPS_AND_ADB = 3;
+    public static final int ACCESS_DISABLED = 0;
+    public static final int ACCESS_APPS_ONLY = 1;
+    public static final int ACCESS_ADB_ONLY = 2;
+    public static final int ACCESS_APPS_AND_ADB = 3;
 
     public static final int MULTIUSER_MODE_OWNER_ONLY = 0;
     public static final int MULTIUSER_MODE_OWNER_MANAGED = 1;
@@ -318,13 +318,13 @@ public class Constants {
     }
 
     public static boolean getSuperuserAccess() {
-        int val = SystemProperties.getInt("persist.sys.root_access", SUPERUSER_ACCESS_DISABLED);
+        int val = SystemProperties.getInt("persist.sys.root_access", ACCESS_DISABLED);
         switch (val) {
-            case SUPERUSER_ACCESS_DISABLED:
+            case ACCESS_DISABLED:
                 return false;
-            case SUPERUSER_ACCESS_APPS_ONLY:
-            case SUPERUSER_ACCESS_ADB_ONLY:
-            case SUPERUSER_ACCESS_APPS_AND_ADB:
+            case ACCESS_APPS_ONLY:
+            case ACCESS_ADB_ONLY:
+            case ACCESS_APPS_AND_ADB:
                 return true;
             default:
                 return false;

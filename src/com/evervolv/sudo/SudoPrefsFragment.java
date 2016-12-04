@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.os.SystemProperties;
 import android.provider.Settings;
 import android.support.v14.preference.PreferenceFragment;
+import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.DropDownPreference;
-import android.support.v7.preference.SwitchPreferenceCompat;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
@@ -46,7 +46,7 @@ public class SudoPrefsFragment extends PreferenceFragment implements
     private DropDownPreference mAutoResponse;
     private DropDownPreference mMultiuserPolicy;
 
-    private SwitchPreferenceCompat mLogging;
+    private SwitchPreference mLogging;
     private DropDownPreference mNotifications;
     private DropDownPreference mRequestTimeout;
 
@@ -85,7 +85,7 @@ public class SudoPrefsFragment extends PreferenceFragment implements
             mPrefSet.removePreference(mMultiuserPolicy);
         }
 
-        mLogging = (SwitchPreferenceCompat) mPrefSet.findPreference(PREF_LOGGING);
+        mLogging = (SwitchPreference) mPrefSet.findPreference(PREF_LOGGING);
         mLogging.setChecked(Constants.getLogging(mContext));
 
         mNotifications = (DropDownPreference) mPrefSet.findPreference(PREF_NOTIFICATIONS);
@@ -185,19 +185,6 @@ public class SudoPrefsFragment extends PreferenceFragment implements
                     Settings.Global.ADB_ENABLED, 0);
             Settings.Global.putInt(getActivity().getContentResolver(),
                     Settings.Global.ADB_ENABLED, 1);
-        }
-        readAccessOptions();
-    }
-
-    private void resetSuperuserAccessOptions() {
-        String oldValue = SystemProperties.get(PREF_ROOT_ACCESS_PROPERTY, "0");
-        SystemProperties.set(PREF_ROOT_ACCESS_PROPERTY, "0");
-        if (!oldValue.equals("0") && "1".equals(SystemProperties.get("service.adb.root", "0"))) {
-            SystemProperties.set("service.adb.root", "0");
-            Settings.Secure.putInt(getActivity().getContentResolver(),
-                    Settings.Secure.ADB_ENABLED, 0);
-            Settings.Secure.putInt(getActivity().getContentResolver(),
-                    Settings.Secure.ADB_ENABLED, 1);
         }
         readAccessOptions();
     }
