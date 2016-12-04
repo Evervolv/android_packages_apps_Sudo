@@ -192,18 +192,13 @@ public class SudoPrefsFragment extends PreferenceFragment implements
     private void setNotificationTypeSummary(int type) {
         switch (type) {
             case Constants.NOTIFICATION_TYPE_NONE:
-                mNotifications.setSummary(
-                        R.string.pref_notifications_no_notification_summary);
+                mNotifications.setSummary(R.string.pref_notifications_none);
                 break;
             case Constants.NOTIFICATION_TYPE_TOAST:
-                mNotifications.setSummary(getString(
-                        R.string.pref_notifications_summary,
-                        getString(R.string.pref_notifications_toast).toLowerCase()));
+                mNotifications.setSummary(R.string.pref_notifications_toast);
                 break;
             case Constants.NOTIFICATION_TYPE_NOTIFICATION:
-                mNotifications.setSummary(getString(
-                        R.string.pref_notifications_summary,
-                        getString(R.string.pref_notifications_notification).toLowerCase()));
+                mNotifications.setSummary(R.string.pref_notifications_notification);
                 break;
         }
     }
@@ -211,13 +206,13 @@ public class SudoPrefsFragment extends PreferenceFragment implements
     private void setMultiuserModeSummary(int mode) {
         switch (mode) {
             case Constants.MULTIUSER_MODE_OWNER_MANAGED:
-                mMultiuserPolicy.setSummary(R.string.pref_multiuser_owner_managed_summary);
+                mMultiuserPolicy.setSummary(R.string.pref_multiuser_owner_managed);
                 break;
             case Constants.MULTIUSER_MODE_OWNER_ONLY:
-                mMultiuserPolicy.setSummary(R.string.pref_multiuser_owner_only_summary);
+                mMultiuserPolicy.setSummary(R.string.pref_multiuser_owner_only);
                 break;
             case Constants.MULTIUSER_MODE_USER:
-                mMultiuserPolicy.setSummary(R.string.pref_multiuser_user_summary);
+                mMultiuserPolicy.setSummary(R.string.pref_multiuser_user);
                 break;
         }
     }
@@ -225,13 +220,13 @@ public class SudoPrefsFragment extends PreferenceFragment implements
     private void setAutoResponseSummary(int response) {
         switch (response) {
             case Constants.AUTOMATIC_RESPONSE_PROMPT:
-                mAutoResponse.setSummary(R.string.pref_auto_response_prompt_summary);
+                mAutoResponse.setSummary(R.string.pref_auto_response_prompt);
                 break;
             case Constants.AUTOMATIC_RESPONSE_ALLOW:
-                mAutoResponse.setSummary(R.string.pref_auto_response_allow_summary);
+                mAutoResponse.setSummary(R.string.pref_auto_response_allow);
                 break;
             case Constants.AUTOMATIC_RESPONSE_DENY:
-                mAutoResponse.setSummary(R.string.pref_auto_response_deny_summary);
+                mAutoResponse.setSummary(R.string.pref_auto_response_deny);
                 break;
         }
     }

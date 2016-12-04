@@ -25,71 +25,54 @@
 
     <!-- Notify/Receive/Request -->
     <string name="owner_login_info">Please switch to the owner account to approve or deny this request.</string>
-    <string name="application_request">%s is requesting Root access.</string>
+    <string name="application_request">%s is requesting Root privileges.</string>
+    <string name="info">Warning: If you do not understand this, you should deny the request.</string>
     <string name="unknown_uid">Unknown UID: %s</string>
     <string name="this_time_only">This time only</string>
-    <string name="remember_for">Remember choice for %s minutes</string>
-    <string name="remember_forever">Remember choice forever</string>
-    <string name="status_incoming">Incoming Superuser Request...</string>
-    <string name="info">Warning: If you do not understand this, you should deny the request.</string>
-    <string name="su_request">Superuser Request</string>
-    <string name="su_granted">Superuser granted to %s</string>
-    <string name="su_denied">Superuser denied to %s</string>
-
-    <!-- Access settings -->
-    <string name="pref_header_access">Access</string>
-
-    <string name="pref_title_root_access">Root Access</string>
-    <string name="pref_root_access_disabled">Disabled</string>
-    <string name="pref_root_access_apps_only">Apps only</string>
-    <string name="pref_root_access_adb_only">ADB only</string>
-    <string name="pref_root_access_apps_adb">Apps and ADB</string>
+    <string name="remember_for">Remember my choice for %s minutes</string>
+    <string name="remember_forever">Remember my choice forever</string>
+    <string name="status_incoming">Incoming request for root privilege...</string>
+    <string name="su_request">Request for Root</string>
+    <string name="su_granted">Root privileges are granted to %s</string>
+    <string name="su_denied">Root privileges are denied to %s</string>
 
     <!-- Security settings -->
     <string name="pref_header_security">Security</string>
 
-    <string name="pref_declared_permission_title">Declared permission</string>
-    <string name="pref_declared_permission_summary">Only allow requests from apps that explicitly declare permission</string>
+    <string name="pref_title_root_access">Root Access</string>
+    <string name="pref_root_access_disabled">Disable access (default)</string>
+    <string name="pref_root_access_apps_only">Enable access for applications only</string>
+    <string name="pref_root_access_adb_only">Enable access for USB debugging only</string>
+    <string name="pref_root_access_apps_adb">Enable for applications and USB debugging</string>
 
     <string name="pref_auto_response_title">Automatic response</string>
-    <string name="pref_auto_response_prompt_summary">Set to prompt</string>
-    <string name="pref_auto_response_allow_summary">Set to allow</string>
-    <string name="pref_auto_response_deny_summary">Set to deny</string>
-
-    <string name="pref_auto_response_prompt">Prompt</string>
-    <string name="pref_auto_response_allow">Allow</string>
-    <string name="pref_auto_response_deny">Deny</string>
+    <string name="pref_auto_response_prompt">Prompt for response (default)</string>
+    <string name="pref_auto_response_allow">Allow all requests for root</string>
+    <string name="pref_auto_response_deny">Deny all requests for root</string>
 
     <string name="pref_multiuser_policy_title">Multiuser policy</string>
-    <string name="pref_multiuser_owner_only_summary">Only the device owner can request Superuser</string>
-    <string name="pref_multiuser_owner_managed_summary">The device owner will be prompted when another user requests Superuser</string>
-    <string name="pref_multiuser_user_summary">All users can request Superuser</string>
-
-    <string name="pref_multiuser_owner_only">Owner only</string>
-    <string name="pref_multiuser_owner_managed">Owner managed</string>
-    <string name="pref_multiuser_user">All Users</string>
-    <string name="pref_multiuser_require_owner">The multiuser policy can only be managed by the device owner.</string>
+    <string name="pref_multiuser_owner_only">Only the device owner can handle requests (default)</string>
+    <string name="pref_multiuser_owner_managed">Prompt for the device owner when users get requests</string>
+    <string name="pref_multiuser_user">All users can handle requests</string>
+    <string name="pref_multiuser_require_owner">Please switch to the owner account to manage the multiuser policy.</string>
 
     <!-- Preferences -->
     <string name="pref_header_settings">Preferences</string>
 
     <string name="pref_logging_title">Logging</string>
-    <string name="pref_logging_summary">Enable or disable request logging</string>
+    <string name="pref_logging_summary_on">Request logging is enabled</string>
+    <string name="pref_logging_summary_off">Request logging is disabled</string>
 
     <string name="pref_request_timeout_title">Request timeout</string>
-    <string name="pref_request_timeout_summary">Superuser requests will time out and be denied after %s seconds</string>
+    <string name="pref_request_timeout_summary">Request will automatically be denied after %s seconds</string>
+    <string name="pref_request_timeout_ten">Automatically deny after 10 seconds</string>
+    <string name="pref_request_timeout_twenty">Automatically deny after 20 seconds</string>
+    <string name="pref_request_timeout_thirty">Automatically deny after 30 seconds</string>
+    <string name="pref_request_timeout_sixty">Automatically deny after 60 seconds</string>
 
-    <string name="pref_request_timeout_ten">10 Seconds</string>
-    <string name="pref_request_timeout_twenty">20 Seconds</string>
-    <string name="pref_request_timeout_thirty">30 Seconds</string>
-    <string name="pref_request_timeout_sixty">60 Seconds</string>
-
-    <string name="pref_notifications_title">Notifications</string>
-    <string name="pref_notifications_summary">A %s will be shown when an app is granted or denied Superuser permissions</string>
-
-    <string name="pref_notifications_no_notification_summary">No notification will be shown</string>
-    <string name="pref_notifications_none">None</string>
-    <string name="pref_notifications_toast">Toast</string>
-    <string name="pref_notifications_notification">Notification</string>
+    <string name="pref_notifications_title">Notification</string>
+    <string name="pref_notifications_none">Do not show a notification</string>
+    <string name="pref_notifications_toast">Show a toast when privileges are given or denied (default)</string>
+    <string name="pref_notifications_notification">Show a notification when privileges are given or denied </string>
 
 </resources>

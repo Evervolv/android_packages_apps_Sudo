@@ -1,16 +1,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/pref_header_access">
+    <PreferenceCategory android:title="@string/pref_header_security">
 
         <android.support.v7.preference.DropDownPreference
             android:key="root_access"
             android:title="@string/pref_title_root_access"
             android:entries="@array/pref_access_list_titles"
             android:entryValues="@array/pref_access_list_values" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/pref_header_security">
 
         <android.support.v7.preference.DropDownPreference
             android:key="auto_response"
@@ -33,7 +29,8 @@
         <android.support.v14.preference.SwitchPreference
             android:key="logging"
             android:title="@string/pref_logging_title"
-            android:summary="@string/pref_logging_summary" />
+            android:summaryOff="@string/pref_logging_summary_off"
+            android:summaryOn="@string/pref_logging_summary_on" />
 
         <android.support.v7.preference.DropDownPreference
             android:key="request_timeout"
