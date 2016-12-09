@@ -1,5 +1,6 @@
 package com.evervolv.sudo.app;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -19,6 +20,12 @@ public class AppPolicyActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_list_activity);
+
+        ActionBar actionBar = getActionBar();
+        setTitle(R.string.app_policies_title);
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(true);
+        }
 
         Resources res = this.getResources();
 
