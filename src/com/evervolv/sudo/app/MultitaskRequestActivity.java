@@ -138,8 +138,6 @@ public class MultitaskRequestActivity extends FragmentActivity {
         }
         new File(mSocketPath).delete();
     }
-
-    public static final String PERMISSION = "android.permission.ACCESS_SUPERUSER";
     
     boolean mRequestReady;
     void requestReady() {
@@ -194,25 +192,9 @@ public class MultitaskRequestActivity extends FragmentActivity {
             findViewById(R.id.unknown).setVisibility(View.GONE);
         }
 
-        // handle declared permission
-        if (Constants.getRequirePermission(MultitaskRequestActivity.this)) {
-            Log.i(LOGTAG, "Automatically denying due to missing permission");
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    if (!mHandled)
-                        handleAction(false, 0);
-                }
-            });
-            return;
-        }
-
         // automatic response
         switch (Constants.getAutomaticResponse(MultitaskRequestActivity.this)) {
         case Constants.AUTOMATIC_RESPONSE_ALLOW:
-            // check if the permission must be granted 
-            if (Constants.getRequirePermission(MultitaskRequestActivity.this))
-                break;
             Log.i(LOGTAG, "Automatically allowing due to user preference");
             mHandler.post(new Runnable() {
                 @Override

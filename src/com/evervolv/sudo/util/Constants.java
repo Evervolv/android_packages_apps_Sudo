@@ -25,7 +25,6 @@ public class Constants {
     public static final String KEY_PIN = "pin";
     private static final String KEY_NOTIFICATION = "notification";
     private static final String KEY_AUTOMATIC_RESPONSE = "automatic_response";
-    private static final String KEY_REQUIRE_PREMISSION = "require_permission";
 
     public static final int NOTIFICATION_TYPE_NONE = 0;
     public static final int NOTIFICATION_TYPE_TOAST = 1;
@@ -197,14 +196,6 @@ public class Constants {
         if (TextUtils.isEmpty(pin))
             return TextUtils.isEmpty(hashed);
         return pin.equals(hashed);
-    }
-
-    public static boolean getRequirePermission(Context context) {
-        return getBoolean(context, KEY_REQUIRE_PREMISSION, false);
-    }
-
-    public static void setRequirePermission(Context context, boolean require) {
-        setBoolean(context, KEY_REQUIRE_PREMISSION, require);
     }
 
     public static int getAutomaticResponse(Context context) {
