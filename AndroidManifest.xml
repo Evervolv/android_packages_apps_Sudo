@@ -61,7 +61,7 @@
             android:launchMode="singleTask"
             android:excludeFromRecents="true"
             android:permission="android.permission.REQUEST_SUPERUSER"
-            android:process=":superuser">
+            android:process=":sudo">
         </activity>
 
         <!-- Only system/su can open this activity -->
@@ -74,7 +74,7 @@
             android:launchMode="singleTask"
             android:excludeFromRecents="true"
             android:permission="android.permission.REQUEST_SUPERUSER"
-            android:process=":superuser">
+            android:process=":sudo">
         </activity>
 
         <!-- Multiple instances of this activity can be running for multiple su requests -->
@@ -85,7 +85,7 @@
             android:excludeFromRecents="true"
             android:exported="false"
             android:label="@string/su_request"
-            android:process=":superuser">
+            android:process=":sudo">
         </activity>
 
         <receiver
