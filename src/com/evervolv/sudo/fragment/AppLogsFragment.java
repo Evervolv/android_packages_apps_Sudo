@@ -1,6 +1,7 @@
-package com.evervolv.sudo.app;
+package com.evervolv.sudo.fragment;
 
-import android.app.ListActivity;
+import android.annotation.Nullable;
+import android.app.ListFragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -18,24 +19,19 @@ import com.evervolv.sudo.database.DatabaseHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppLogsActivity extends ListActivity {
+public class AppLogsFragment extends ListFragment {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTitle(R.string.app_policies_logs_title);
-        ArrayList<LogEntry> logs = DatabaseHelper.Application.getLogs(this);
-        setListAdapter(new LogAdapter(this, R.layout.log_list_item, logs));
+    public void onCreate(Bundle saved) {
+        super.onCreate(saved);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+            Bundle savedInstanceState) {
+        ArrayList<LogEntry> logs = DatabaseHelper.Application.getLogs(getContext());
+        setListAdapter(new LogAdapter(getContext(), R.layout.log_list_item, logs));
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     public class LogAdapter extends ArrayAdapter<LogEntry> {

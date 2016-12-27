@@ -21,8 +21,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Toast;
 
 import com.evervolv.sudo.R;
-import com.evervolv.sudo.app.AppPolicyActivity;
-import com.evervolv.sudo.app.AppLogsActivity;
+import com.evervolv.sudo.fragment.AppPolicyFragment;
+import com.evervolv.sudo.fragment.AppLogsFragment;
 import com.evervolv.sudo.util.Constants;
 
 public class SudoPrefsFragment extends PreferenceFragment implements
@@ -121,12 +121,12 @@ public class SudoPrefsFragment extends PreferenceFragment implements
                 getActivity().finish();
                 return true;
             case R.id.menu_app_policies:
-                Intent applist = new Intent(getActivity(), AppPolicyActivity.class);
-                startActivity(applist);
+                getActivity().getFragmentManager().beginTransaction().replace(R.id.content_frame,
+                        new AppPolicyFragment(), TAG).commit();
                 return true;
             case R.id.menu_logs:
-                Intent logs = new Intent(getActivity(), AppLogsActivity.class);
-                startActivity(logs);
+                getActivity().getFragmentManager().beginTransaction().replace(R.id.content_frame,
+                        new AppLogsFragment(), TAG).commit();
                 return true;
            default:
                 return super.onOptionsItemSelected(item);

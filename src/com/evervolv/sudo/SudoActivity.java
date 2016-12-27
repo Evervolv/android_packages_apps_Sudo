@@ -33,35 +33,23 @@ public class SudoActivity extends SettingsDrawerActivity implements
         PreferenceFragment.OnPreferenceStartFragmentCallback,
         PreferenceFragment.OnPreferenceStartScreenCallback {
 
-    private static final String TAG_SUDO = "sudo";
-
-    private String mInitialTitle;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getFragmentManager().findFragmentByTag(TAG_SUDO) == null) {
-            final Fragment fragment = new SudoPrefsFragment();
-
+        if (savedInstanceState == null) {
+            Fragment fragment = new SudoPrefsFragment();
             getFragmentManager().beginTransaction().replace(R.id.content_frame,
-                    fragment, TAG_SUDO).commit();
-
-            mInitialTitle = String.valueOf(getActionBar().getTitle());
-
-            String extra = getIntent().getStringExtra(TAG_SUDO);
-            if (extra != null) {
-                startPreferenceScreen((PreferenceFragment)fragment, extra, false);
-            }
+                    fragment).commit();
         }
     }
 
     @Override
     public void onBackPressed() {
-        if (!getFragmentManager().popBackStackImmediate()) {
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
             super.onBackPressed();
         } else {
-            getActionBar().setTitle(mInitialTitle);
+            getFragmentManager().popBackStack();
         }
     }
 
@@ -82,34 +70,26 @@ public class SudoActivity extends SettingsDrawerActivity implements
         }
     }
 
-    private boolean startPreferenceScreen(PreferenceFragment caller, String key, boolean backStack) {
+    @Override
+    public boolean onPreferenceStartScreen(PreferenceFragment caller, PreferenceScreen pref) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         SubSettingsFragment fragment = new SubSettingsFragment();
         final Bundle b = new Bundle(1);
-        b.putString(PreferenceFragment.ARG_PREFERENCE_ROOT, key);
+        b.putString(PreferenceFragment.ARG_PREFERENCE_ROOT, pref.getKey());
         fragment.setArguments(b);
         fragment.setTargetFragment(caller, 0);
         transaction.replace(R.id.content_frame, fragment);
-        if (backStack) {
-            transaction.addToBackStack("PreferenceFragment");
-        }
+        transaction.addToBackStack("PreferenceFragment");
         transaction.commit();
 
         return true;
     }
 
-    @Override
-    public boolean onPreferenceStartScreen(PreferenceFragment caller, PreferenceScreen pref) {
-        return startPreferenceScreen(caller, pref.getKey(), true);
-    }
-
     public static class SubSettingsFragment extends PreferenceFragment {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            PreferenceScreen p = (PreferenceScreen) ((PreferenceFragment) getTargetFragment())
-                    .getPreferenceScreen().findPreference(rootKey);
-            setPreferenceScreen(p);
-            getActivity().getActionBar().setTitle(p.getTitle());
+            setPreferenceScreen((PreferenceScreen) ((PreferenceFragment) getTargetFragment())
+                    .getPreferenceScreen().findPreference(rootKey));
         }
     }
 }

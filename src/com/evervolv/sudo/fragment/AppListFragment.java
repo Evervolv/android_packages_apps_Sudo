@@ -1,5 +1,6 @@
 package com.evervolv.sudo.fragment;
 
+import android.annotation.Nullable;
 import android.app.Fragment;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,10 +18,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.evervolv.sudo.R;
-import com.evervolv.sudo.app.AppPolicyActivity;
 import com.evervolv.sudo.database.LogEntry;
 import com.evervolv.sudo.database.DatabaseHelper;
 import com.evervolv.sudo.database.UidPolicy;
+import com.evervolv.sudo.fragment.AppPolicyFragment;
 import com.evervolv.sudo.util.Helper;
 
 import java.util.ArrayList;
@@ -30,7 +31,6 @@ import java.util.List;
 public class AppListFragment extends Fragment {
 
     private Context mContext;
-    private AppPolicyActivity mActivity;
 
     private AppPolicyAdapter mAppListAdapter;
     private List<AppPolicy> mAppList = new ArrayList<AppPolicy>();
@@ -44,11 +44,11 @@ public class AppListFragment extends Fragment {
     public void onCreate(Bundle saved) {
         super.onCreate(saved);
         mContext = getActivity();
-        mActivity = (AppPolicyActivity) getActivity();
+        setHasOptionsMenu(false);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         
         View v = inflater.inflate(R.layout.fragment_apps, container, false);
         mAppListView = (ListView) v.findViewById(R.id.app_list);
@@ -103,7 +103,7 @@ public class AppListFragment extends Fragment {
                 .findFragmentById(R.id.info_pane);
         frag.setPolicy(mAppList.get(index).getPolicy());
         if (show) {
-            mActivity.togglePane();
+            AppPolicyFragment.togglePane();
         }
     }
 

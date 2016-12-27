@@ -1,5 +1,6 @@
 package com.evervolv.sudo.fragment;
 
+import android.annotation.Nullable;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.res.Resources;
@@ -21,10 +22,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.evervolv.sudo.R;
-import com.evervolv.sudo.app.AppPolicyActivity;
 import com.evervolv.sudo.database.LogEntry;
 import com.evervolv.sudo.database.DatabaseHelper;
 import com.evervolv.sudo.database.UidPolicy;
+import com.evervolv.sudo.fragment.AppPolicyFragment;
 import com.evervolv.sudo.util.Helper;
 
 import java.util.ArrayList;
@@ -33,7 +34,6 @@ import java.util.List;
 public class AppInfoFragment extends Fragment {
 
     private Context mContext;
-    private AppPolicyActivity mActivity;
     private Resources mRes;
     private UidPolicy mCurrPolicy;
 
@@ -53,13 +53,13 @@ public class AppInfoFragment extends Fragment {
     @Override
     public void onCreate(Bundle saved) {
         super.onCreate(saved);
-        mContext = getActivity().getApplicationContext();
-        mActivity = (AppPolicyActivity) getActivity();
+        mContext = getContext();
         mRes = mContext.getResources();
+        setHasOptionsMenu(true);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_info, container, false);
 
@@ -104,6 +104,13 @@ public class AppInfoFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        if (AppPolicyFragment.isSlidingPaneOpen() == false) {
+            getActivity().getActionBar().setTitle(getCurrentPolicyName());
+        }
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.app_policy_info_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
@@ -122,7 +129,7 @@ public class AppInfoFragment extends Fragment {
         AppListFragment frag = (AppListFragment) getFragmentManager()
                 .findFragmentById(R.id.list_pane);
         frag.deletePolicy(mCurrPolicy);
-        mActivity.togglePane();
+        AppPolicyFragment.togglePane();
     }
 
     public void setPolicy(UidPolicy policy) {

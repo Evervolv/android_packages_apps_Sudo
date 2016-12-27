@@ -39,19 +39,6 @@
                     android:value="com.android.settings.category.system" />
         </activity>
 
-        <activity
-            android:name=".app.AppPolicyActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:excludeFromRecents="true"
-            android:parentActivityName=".SudoActivity">
-        </activity>
-
-        <activity
-            android:name=".app.AppLogsActivity"
-            android:excludeFromRecents="true"
-            android:parentActivityName=".SudoActivity">
-        </activity>
-
         <!-- Only system/su can open this activity -->
         <!-- This activity will then call the MultitaskSuRequestActivity to create a new task stack -->
         <activity
